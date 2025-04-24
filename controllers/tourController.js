@@ -15,6 +15,23 @@ exports.checkId = (req, res, next, val) => {
   next();
 };
 
+exports.checkBody = (req, res, next, val) => {
+  const bodyProperties = ['name', 'price'];
+  console.log(bodyProperties);
+  if (req.body.includes(bodyProperties)) {
+    res.status(200).json({
+      status: 'success',
+      message: 'All values are available',
+    });
+  } else {
+    res.status(400).json({
+      status: 'fail',
+      message: 'Missing values',
+    });
+  }
+  next();
+};
+
 exports.getAllTours = (req, res) => {
   console.log(req.requestTime);
 
