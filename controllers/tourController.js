@@ -9,6 +9,12 @@ exports.getAllTours = async (req, res) => {
     //   difficulty: 'easy',
     // });
 
+    const tours = await Tour.find()
+      .where('duration')
+      .equals(5)
+      .where('difficulty')
+      .equals('easy');
+
     res.status(200).json({
       status: 'success',
       results: tours.length,
